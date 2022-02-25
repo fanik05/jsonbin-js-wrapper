@@ -1,104 +1,11 @@
-const { initiateJBin } = require("./api");
+const { initiateJBin } = require('./api');
 
-exports.jsonBinWrapper = (API_KEY) => {
+const jsonBinWrapper = (API_KEY) => {
   const JSONBin = initiateJBin(API_KEY);
 
   return {
-    getBin: (binId) => {
+    get: (binId) => {
       return JSONBin.get(`/b/${binId}`)
-        .then((response) => {
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    getSpecificBin: (binId, binVersion) => {
-      return JSONBin.get(`/b/${binId}/${binVersion}`)
-        .then((response) => {
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    getLatestBin: (binId) => {
-      return JSONBin.get(`/b/${binId}/latest`)
-        .then((response) => {
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    postBin: (data = {}) => {
-      return JSONBin.post(`/b`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    putBin: (binId, data = {}) => {
-      return JSONBin.put(`/b/${binId}`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    deleteBin: (binId) => {
-      return JSONBin.put(`/b/${binId}`)
         .then((response) => ({
           status: response.status,
           binId: response.data.metadata.id,
@@ -109,5 +16,80 @@ exports.jsonBinWrapper = (API_KEY) => {
           message: error.response.data.message,
         }));
     },
+
+    getSpecific: (binId, binVersion) => {
+      return JSONBin.get(`/b/${binId}/${binVersion}`)
+        .then((response) => ({
+          status: response.status,
+          binId: response.data.metadata.id,
+          record: response.data.record,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
+    },
+
+    getLatest: (binId) => {
+      return JSONBin.get(`/b/${binId}/latest`)
+        .then((response) => ({
+          status: response.status,
+          binId: response.data.metadata.id,
+          record: response.data.record,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
+    },
+
+    post: (data = {}) => {
+      return JSONBin.post(`/b`, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => ({
+          status: response.status,
+          binId: response.data.metadata.id,
+          record: response.data.record,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
+    },
+
+    put: (binId, data = {}) => {
+      return JSONBin.put(`/b/${binId}`, data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => ({
+          status: response.status,
+          parentId: response.data.metadata.parentId,
+          record: response.data.record,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
+    },
+
+    delete: (binId) => {
+      return JSONBin.delete(`/b/${binId}`)
+        .then((response) => ({
+          status: response.status,
+          binId: response.data.metadata.id,
+          message: response.data.message,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
+    },
   };
 };
+
+module.exports = jsonBinWrapper;

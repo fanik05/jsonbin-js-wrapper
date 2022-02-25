@@ -1,12 +1,23 @@
 {
-  "name": "jsonbin-js-wrapper",
+  "name": "@fanik05/jsonbin-js-wrapper",
   "version": "1.0.0",
   "description": "A javascript wrapper around JSONBin.",
   "main": "index.js",
-  "repository": "https://github.com/fanik05/jsonbin-js-wrapper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fanik05/jsonbin-js-wrapper.git"
+  },
   "author": "fanik05 <fatinanik129@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.26.0"
+  },
+  "bugs": {
+    "url": "https://github.com/fanik05/jsonbin-js-wrapper/issues"
+  },
+  "homepage": "https://github.com/fanik05/jsonbin-js-wrapper#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

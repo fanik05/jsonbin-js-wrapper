@@ -1,5 +1,17 @@
 # jsonbin-js-wrapper
 
+## How to use
+`const { jsonBinWrapper } = require('jsonbin-js-wrapper');
+
+const jBin = jsonBinWrapper(<Your API Key>);
+
+async function test {
+  await jBin.<available methods>
+  .....
+  .....
+}
+`
+
 ## methods
 
 - `getBin(<BIN_ID>)`

@@ -1,0 +1,12 @@
+{
+  "name": "jsonbin-js-wrapper",
+  "version": "1.0.0",
+  "description": "A javascript wrapper around JSONBin.",
+  "main": "index.js",
+  "repository": "https://github.com/fanik05/jsonbin-js-wrapper",
+  "author": "fanik05 <fatinanik129@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
+}

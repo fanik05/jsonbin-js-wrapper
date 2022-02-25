@@ -1,5 +1,5 @@
 {
-  "name": "@fanik05/jsonbin-js-wrapper",
+  "name": "jsonbin-js-wrapper",
   "version": "1.0.0",
   "description": "A javascript wrapper around JSONBin.",
   "main": "index.js",

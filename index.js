@@ -4,8 +4,8 @@ exports.jsonBinWrapper = (API_KEY) => {
   const JSONBin = initiateJBin(API_KEY);
 
   return {
-    getBin: async (binId) => {
-      await JSONBin.get(`/b/${binId}`)
+    getBin: (binId) => {
+      return JSONBin.get(`/b/${binId}`)
         .then((response) => {
           return {
             status: response.status,
@@ -21,8 +21,8 @@ exports.jsonBinWrapper = (API_KEY) => {
         });
     },
 
-    getSpecificBin: async (binId, binVersion) => {
-      await JSONBin.get(`/b/${binId}/${binVersion}`)
+    getSpecificBin: (binId, binVersion) => {
+      return JSONBin.get(`/b/${binId}/${binVersion}`)
         .then((response) => {
           return {
             status: response.status,
@@ -38,8 +38,8 @@ exports.jsonBinWrapper = (API_KEY) => {
         });
     },
 
-    getLatestBin: async (binId) => {
-      await JSONBin.get(`/b/${binId}/latest`)
+    getLatestBin: (binId) => {
+      return JSONBin.get(`/b/${binId}/latest`)
         .then((response) => {
           return {
             status: response.status,
@@ -55,30 +55,8 @@ exports.jsonBinWrapper = (API_KEY) => {
         });
     },
 
-    postBin: async (data = {}) => {
-      await JSONBin.post(`/b`, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => {
-          console.log(response);
-          return {
-            status: response.status,
-            binId: response.data.metadata.id,
-            record: response.data.record,
-          };
-        })
-        .catch((error) => {
-          return {
-            status: error.response.status,
-            message: error.response.data.message,
-          };
-        });
-    },
-
-    putBin: async (binId, data = {}) => {
-      await JSONBin.put(`/b/${binId}`, data, {
+    postBin: (data = {}) => {
+      return JSONBin.post(`/b`, data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -98,8 +76,12 @@ exports.jsonBinWrapper = (API_KEY) => {
         });
     },
 
-    deleteBin: async (binId) => {
-      return await JSONBin.put(`/b/${binId}`)
+    putBin: (binId, data = {}) => {
+      return JSONBin.put(`/b/${binId}`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((response) => {
           return {
             status: response.status,
@@ -113,6 +95,19 @@ exports.jsonBinWrapper = (API_KEY) => {
             message: error.response.data.message,
           };
         });
+    },
+
+    deleteBin: (binId) => {
+      return JSONBin.put(`/b/${binId}`)
+        .then((response) => ({
+          status: response.status,
+          binId: response.data.metadata.id,
+          record: response.data.record,
+        }))
+        .catch((error) => ({
+          status: error.response.status,
+          message: error.response.data.message,
+        }));
     },
   };
 };

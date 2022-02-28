@@ -5,7 +5,7 @@
 ```
 const jsonBin = require('jsonbin-js-wrapper')(<Your API Key>);
 
-jsonBin.<available methods>.then(<handle succes>).catch(<handle errors>);
+jsonBin.<available methods>.then(<handle success>).catch(<handle errors>);
 
 ```
 

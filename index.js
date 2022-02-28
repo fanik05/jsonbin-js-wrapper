@@ -1,4 +1,4 @@
-const { initiateJBin } = require('./api');
+const { initiateJBin } = require("./api");
 
 const jsonBinWrapper = (API_KEY) => {
   const JSONBin = initiateJBin(API_KEY);
@@ -46,7 +46,7 @@ const jsonBinWrapper = (API_KEY) => {
     post: (data = {}) => {
       return JSONBin.post(`/b`, data, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       })
         .then((response) => ({
@@ -63,7 +63,7 @@ const jsonBinWrapper = (API_KEY) => {
     put: (binId, data = {}) => {
       return JSONBin.put(`/b/${binId}`, data, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       })
         .then((response) => ({

@@ -43,10 +43,11 @@ const jsonBinWrapper = (API_KEY) => {
         }));
     },
 
-    post: (data = {}) => {
+    post: (data = {}, binName) => {
       return JSONBin.post(`/b`, data, {
         headers: {
           "Content-Type": "application/json",
+          "X-Bin-Name": binName
         },
       })
         .then((response) => ({

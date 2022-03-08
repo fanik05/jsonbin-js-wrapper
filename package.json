@@ -1,6 +1,6 @@
 {
   "name": "jsonbin-js-wrapper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A javascript wrapper around JSONBin.",
   "main": "index.js",
   "repository": {

@@ -14,6 +14,6 @@ jsonBin.<available methods>.then(<handle success>).catch(<handle errors>);
 - `get(<BIN_ID>)`
 - `getSpecific(<BIN_ID>, <BIN_VERSION>)`
 - `getLatest(<BIN_ID>)`
-- `post(<data[obj]>)`
+- `post(<data[obj]>, binName)`
 - `put(<BIN_ID>, <data[obj]>)`
 - `delete(<BIN_ID)>)`

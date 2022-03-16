@@ -1,5 +1,7 @@
 # jsonbin-js-wrapper
 
+A JavaScript library to use [JSONBin.io](https://jsonbin.io) API
+
 ## How to use
 
 ```
